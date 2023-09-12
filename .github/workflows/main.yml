@@ -1,7 +1,7 @@
 on: [push]
 
 jobs:
-  your_job:
+  bzm-selenium-test:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -16,4 +16,5 @@ jobs:
       - name: Run JUnit tests
         run: mvn test
         env:
-          MY_SECRET: ${{ secrets.MY_SECRET_NAME }}
+          API_KEY: ${{ secrets.API_KEY }}
+          API_SECRET: ${{ secrets.API_SECRET }}
