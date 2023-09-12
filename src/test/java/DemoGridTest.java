@@ -151,6 +151,21 @@ public class DemoGridTest {
         assertEquals("Place order", driver.findElement(By.xpath("//*[text() = \"Place order\"]")).getText());
     }
 
+    @Test
+    public void shouldAddProduct3ToCart() throws InterruptedException {
+        String productURL = getProductURL(3);
+        driver.get(productURL);
+        driver.findElement(By.xpath("//*[text() = \"Add to cart\"]")).click();
+        Thread.sleep(2000);
+        driver.switchTo().alert().accept();
+        Thread.sleep(2000);
+        driver.findElement(By.xpath("//*[text() = \"Cart\"]")).click();
+        Thread.sleep(2000);
+        driver.findElement(By.xpath("//*[text() = \"Place Order\"]")).click();
+        Thread.sleep(2000);
+        assertEquals("Place order", driver.findElement(By.xpath("//*[text() = \"Place order\"]")).getText());
+    }
+
     public static String getProductURL(int productId) {
         String url = "http://mockservicedynamicurl312311.mock.blazemeter.com/products?id=" + productId;
 
