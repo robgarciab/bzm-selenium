@@ -29,8 +29,8 @@ public class DemoGridTest {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(DemoGridTest.class);
 
-    private final static String API_KEY = "d644788b923bda9c4264813a";
-    private final static String API_SECRET = "c71c0db98e8664444d2fca15aec225b22fc65ef3e3b77ddc8f676f1b01979c88f03caf69";
+    private final static String API_KEY = System.getenv("API_KEY");
+    private final static String API_SECRET = System.getenv("API_SECRET");
     private final static String BASE = "a.blazemeter.com";
 
 
