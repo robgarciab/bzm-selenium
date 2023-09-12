@@ -1,3 +1,4 @@
+import io.github.cdimascio.dotenv.Dotenv;
 import org.junit.*;
 import org.junit.rules.TestName;
 import org.junit.runner.Description;
@@ -29,8 +30,6 @@ public class DemoGridTest {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(DemoGridTest.class);
 
-    private final static String API_KEY = System.getenv("API_KEY");
-    private final static String API_SECRET = System.getenv("API_SECRET");
     private final static String BASE = "a.blazemeter.com";
 
 
@@ -77,6 +76,12 @@ public class DemoGridTest {
         URL url = new URL(curl);
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
+
+        Dotenv dotenv = Dotenv.load();
+
+        final String API_KEY = System.getenv("API_KEY") != null ? System.getenv("API_KEY") : dotenv.get("API_KEY");
+        final String API_SECRET = System.getenv("API_SECRET") != null ? System.getenv("API_SECRET") : dotenv.get("API_SECRET");
+
         capabilities.setCapability("blazemeter.apiKey", API_KEY);
         capabilities.setCapability("blazemeter.apiSecret", API_SECRET);
 
